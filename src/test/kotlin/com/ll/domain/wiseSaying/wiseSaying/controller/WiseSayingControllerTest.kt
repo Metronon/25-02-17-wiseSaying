@@ -4,6 +4,7 @@ import com.ll.TestRunner
 import com.ll.global.bean.SingletonScope
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
 import kotlin.test.Test
 
 class WiseSayingControllerTest {
@@ -13,7 +14,8 @@ class WiseSayingControllerTest {
     }
 
     @Test
-    fun `명언 작성`() {
+    @DisplayName("명언 등록 테스트")
+    fun t001() {
         val result = TestRunner.run(
             """
             등록
@@ -30,7 +32,8 @@ class WiseSayingControllerTest {
     }
 
     @Test
-    fun `명언 목록`() {
+    @DisplayName("명언 목록 조회 테스트")
+    fun t002() {
         val result = TestRunner.run(
             """
             등록
@@ -50,7 +53,8 @@ class WiseSayingControllerTest {
     }
 
     @Test
-    fun `명언 삭제`() {
+    @DisplayName("명언 삭제 테스트")
+    fun t003() {
         val result = TestRunner.run(
             """
             등록
@@ -72,7 +76,8 @@ class WiseSayingControllerTest {
     }
 
     @Test
-    fun `명언 수정`() {
+    @DisplayName("명언 수정 테스트")
+    fun t004() {
         val result = TestRunner.run(
             """
             등록
