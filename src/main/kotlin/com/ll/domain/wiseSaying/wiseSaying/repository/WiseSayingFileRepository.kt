@@ -2,14 +2,17 @@ package com.ll.domain.wiseSaying.wiseSaying.repository
 
 import com.ll.domain.wiseSaying.wiseSaying.entity.WiseSaying
 import com.ll.global.app.AppConfig
+import com.ll.standard.util.json.JsonUtil
 import java.nio.file.Path
 
 class WiseSayingFileRepository : WiseSayingRepository {
-    override fun save(wiseSaying: WiseSaying): WiseSaying {
-        if (wiseSaying.isNew()) {
-            wiseSaying.id = loadLastId() + 1
-            saveLastId(wiseSaying.id)
+    val tableDirPath: Path
+        get() {
+            return AppConfig.dbDirPath.resolve("wiseSaying")
         }
+
+    override fun save(wiseSaying: WiseSaying): WiseSaying {
+        if (wiseSaying.isNew()) wiseSaying.id = genNextId()
 
         saveOnDisk(wiseSaying)
 
@@ -17,40 +20,67 @@ class WiseSayingFileRepository : WiseSayingRepository {
     }
 
     override fun isEmpty(): Boolean {
-        return findAll().isEmpty()
+        return tableDirPath.toFile()
+            .listFiles()
+            ?.filter { it.name != "data.json" }
+            ?.none { it.name.endsWith(".json") }
+            ?: true
     }
 
     override fun findAll(): List<WiseSaying> {
-        return tableDirPath
-            .toFile()
+        return tableDirPath.toFile()
             .listFiles()
-            ?.filter { it.extension == "json" }
-            ?.map { WiseSaying.fromJson(it.readText()) }
-            ?: emptyList()
+            ?.filter { it.name != "data.json" }
+            ?.filter { it.name.endsWith(".json") }
+            ?.map { it.readText() }
+            ?.map(WiseSaying.Companion::fromJsonStr)
+            .orEmpty()
     }
 
     override fun findById(id: Int): WiseSaying? {
         return tableDirPath
+            .resolve("$id.json")
             .toFile()
-            .listFiles()
-            ?.find { it.name == "${id}.json" }
-            ?.let { WiseSaying.fromJson(it.readText()) }
+            .takeIf { it.exists() }
+            ?.readText()
+            ?.let(WiseSaying.Companion::fromJsonStr)
     }
 
     override fun delete(wiseSaying: WiseSaying) {
-        tableDirPath.resolve("${wiseSaying.id}.json").toFile().delete()
+        tableDirPath
+            .resolve("${wiseSaying.id}.json")
+            .toFile()
+            .takeIf { it.exists() }
+            ?.delete()
     }
 
     override fun clear() {
         tableDirPath.toFile().deleteRecursively()
     }
 
-    val tableDirPath: Path
-        get() {
-            return AppConfig.dbDirPath.resolve("wiseSaying")
-        }
+    override fun build() {
+        mkTableDirsIfNotExists()
 
-    private fun mkdirDbDir() {
+        val mapList = findAll()
+            .map(WiseSaying::map)
+
+        JsonUtil.toString(mapList)
+            .let {
+                tableDirPath
+                    .resolve("data.json")
+                    .toFile()
+                    .writeText(it)
+            }
+    }
+
+    private fun saveOnDisk(wiseSaying: WiseSaying) {
+        mkTableDirsIfNotExists()
+
+        val wiseSayingFile = tableDirPath.resolve("${wiseSaying.id}.json")
+        wiseSayingFile.toFile().writeText(wiseSaying.jsonStr)
+    }
+
+    private fun mkTableDirsIfNotExists() {
         tableDirPath.toFile().run {
             if (!exists()) {
                 mkdirs()
@@ -58,15 +88,8 @@ class WiseSayingFileRepository : WiseSayingRepository {
         }
     }
 
-    private fun saveOnDisk(wiseSaying: WiseSaying) {
-        mkdirDbDir()
-
-        val wiseSayingFile = tableDirPath.resolve("${wiseSaying.id}.json")
-        wiseSayingFile.toFile().writeText(wiseSaying.json)
-    }
-
     internal fun saveLastId(lastId: Int) {
-        mkdirDbDir()
+        mkTableDirsIfNotExists()
 
         tableDirPath.resolve("lastId.txt")
             .toFile()
@@ -81,6 +104,12 @@ class WiseSayingFileRepository : WiseSayingRepository {
                 .toInt()
         } catch (e: Exception) {
             0
+        }
+    }
+
+    private fun genNextId(): Int {
+        return (loadLastId() + 1).also {
+            saveLastId(it)
         }
     }
 }

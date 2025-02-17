@@ -4,10 +4,10 @@ import com.ll.domain.wiseSaying.wiseSaying.entity.WiseSaying
 import com.ll.global.bean.SingletonScope
 
 class WiseSayingService {
-    private val wiseSayingRepository by lazy { SingletonScope.wiseSayingRepository }
+    private val wiseSayingRepository = SingletonScope.wiseSayingRepository
 
     fun write(content: String, author: String): WiseSaying {
-        return wiseSayingRepository.save(WiseSaying(content, author))
+        return wiseSayingRepository.save(WiseSaying(content = content, author = author))
     }
 
     fun isEmpty(): Boolean {
@@ -30,5 +30,9 @@ class WiseSayingService {
         wiseSaying.modify(content, author)
 
         wiseSayingRepository.save(wiseSaying)
+    }
+
+    fun build() {
+        wiseSayingRepository.build()
     }
 }

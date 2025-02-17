@@ -10,7 +10,6 @@ object TestRunner {
     private val originalOut: PrintStream = System.out
 
     fun run(input: String): String {
-        // 마지막 종료 스크립트화
         val formattedInput = input
             .trimIndent()
             .plus("\n종료")
@@ -26,7 +25,6 @@ object TestRunner {
 
                     System.setOut(printStream)
 
-                    // 앱 실행
                     App().run()
                 } finally {
                     System.setIn(originalIn)
@@ -37,7 +35,7 @@ object TestRunner {
             outputStream
                 .toString()
                 .trim()
-                .replace("\r\n", "\n") // 개행 문자 변경
+                .replace("\r\n", "\n")
         }
     }
 }

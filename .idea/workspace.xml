@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b72a8345-f7d5-4f93-aae8-de74a1fd4e16" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/system/system/controller/SystemController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/system/system/controller/SystemController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/controller/WiseSayingController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/controller/WiseSayingController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/entity/WiseSaying.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/entity/WiseSaying.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingFileRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingFileRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingMemoryRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingMemoryRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/service/WiseSayingService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/ll/domain/wiseSaying/wiseSaying/service/WiseSayingService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/ll/TestRunner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/ll/TestRunner.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/ll/domain/system/system/controller/SystemControllerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/ll/domain/system/system/controller/SystemControllerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/ll/domain/wiseSaying/wiseSaying/controller/WiseSayingControllerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/ll/domain/wiseSaying/wiseSaying/controller/WiseSayingControllerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingFileRepositoryTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/ll/domain/wiseSaying/wiseSaying/repository/WiseSayingFileRepositoryTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +174,7 @@
       <option name="presentableId" value="Default" />
       <updated>1739751584533</updated>
       <workItem from="1739751585612" duration="8000" />
-      <workItem from="1739751598954" duration="3337000" />
+      <workItem from="1739751598954" duration="4832000" />
     </task>
     <servers />
   </component>

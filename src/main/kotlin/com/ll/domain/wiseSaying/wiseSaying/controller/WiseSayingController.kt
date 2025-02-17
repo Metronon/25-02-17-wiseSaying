@@ -4,7 +4,7 @@ import com.ll.global.bean.SingletonScope
 import com.ll.global.rq.Rq
 
 class WiseSayingController {
-    private val wiseSayingService by lazy { SingletonScope.wiseSayingService }
+    private val wiseSayingService = SingletonScope.wiseSayingService
 
     fun actionWrite(rq: Rq) {
         print("명언 : ")
@@ -79,5 +79,11 @@ class WiseSayingController {
         wiseSayingService.modify(wiseSaying, content, author)
 
         println("${id}번 명언을 수정하였습니다.")
+    }
+
+    fun actionBuild(rq: Rq) {
+        wiseSayingService.build()
+
+        println("data.json 파일의 내용이 갱신되었습니다.")
     }
 }
